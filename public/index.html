@@ -8,110 +8,114 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="form">
-    <h3>Forma de inregestrare</h3>
-    <form action="">
-        <div>
-            <label for="name">
-                Name
-            </label>
-            <input type="text" id="name">
-        </div>
-        <div>
-            <label for="second_name">
-                Prenume
-            </label>
-            <input type="text" id="second_name">
-        </div>
-        <div>
-            <label for="email">
-                Email
-            </label>
-            <input type="email" id="email">
-        </div>
-        <div>
-            <label for="city">
-                Oras
-            </label>
-            <select id="city">
-                <option value="Balti">Balti</option>
-                <option value="Chisinau">Chisinau</option>
-                <option value="Edinet">Edinet</option>
-            </select>
-        </div>
-        <div>
-            <label for="age">
-                Varsta
-            </label>
-            <input type="number" id="age">
-        </div>
-        <div>
-            <label for="birthdate">
-                Data nasterii
-            </label>
-            <input type="date" id="birthdate">
-        </div>
-        <div>
-            <label for="color">
-                Color
-            </label>
-            <input type="color" id="color">
-        </div>
-        <div>
+<div id="app">
+    <div class="form">
+        <h3>Forma de inregestrare</h3>
+        <form action="">
+            <div>
+                <label for="name">
+                    Name
+                </label>
+                <input v-model="form.name" type="text" id="name">
+            </div>
+            <div>
+                <label for="second_name">
+                    Prenume
+                </label>
+                <input v-model="form.second_name" type="text" id="second_name">
+            </div>
+            <div>
+                <label for="email">
+                    Email
+                </label>
+                <input v-model="form.email" type="email" id="email">
+            </div>
+            <div>
+                <label for="city">
+                    Oras
+                </label>
+                <select id="city" v-model="form.city">
+                    <option value="Balti">Balti</option>
+                    <option value="Chisinau">Chisinau</option>
+                    <option value="Edinet">Edinet</option>
+                </select>
+            </div>
+            <div>
+                <label for="age">
+                    Varsta
+                </label>
+                <input v-model="form.age" type="number" id="age">
+            </div>
+            <div>
+                <label for="birthdate">
+                    Data nasterii
+                </label>
+                <input v-model="form.birthdate" type="date" id="birthdate">
+            </div>
+            <div>
+                <label for="color">
+                    Color
+                </label>
+                <input type="color" id="color">
+            </div>
+            <div>
             <span>
                 Gen
             </span>
-            <div class="flex">
-                <input type="radio" name="gender" id="m_gender">
-                <label for="m_gender">
-                    M
-                </label>
-                <input type="radio" name="gender" id="f_gender">
-                <label for="f_gender">
-                    F
-                </label>
+                <div class="flex">
+                    <input type="radio" name="gender" id="m_gender">
+                    <label for="m_gender">
+                        M
+                    </label>
+                    <input type="radio" name="gender" id="f_gender">
+                    <label for="f_gender">
+                        F
+                    </label>
+                </div>
             </div>
-        </div>
-        <div>
+            <div>
             <span>
                 Limbi vorbite
             </span>
-            <div class="flex">
-                <input type="checkbox" id="ru"> <label for="ru">RU</label>
-                <input type="checkbox" id="ro"> <label for="ro">EN</label>
-                <input type="checkbox" id="en"> <label for="en">EN</label>
+                <div class="flex">
+                    <input type="checkbox" id="ru"> <label for="ru">RU</label>
+                    <input type="checkbox" id="ro"> <label for="ro">EN</label>
+                    <input type="checkbox" id="en"> <label for="en">EN</label>
+                </div>
             </div>
-        </div>
-        <div>
-            <label for="password">
-                Parola
-            </label>
-            <input type="password" id="password">
-        </div>
-        <div
-            <br>
-            <br>
-            <div class="flex">
-                <input type="checkbox">
-                <label>Arata parola</label>
+            <div>
+                <label for="password">
+                    Parola
+                </label>
+                <input :type="passwordType" id="password">
             </div>
-        </div>
-        <div class="two-row">
-            <label for="biografie">
-                Biografie
-            </label>
-            <textarea id="biografie"></textarea>
-        </div>
-        <div class="two-row">
-            <label for="photo">
-                Foto
-            </label>
-            <input type="file" id="photo">
-        </div>
-        <div class="submit">
-            <button type="submit">Save</button>
-        </div>
-    </form>
+            <div>
+                <br>
+                <br>
+                <div class="flex">
+                    <input v-model="showPassword" @click="togglePassword" type="checkbox">
+                    <label>Arata parola</label>
+                </div>
+            </div>
+            <div class="two-row">
+                <label for="biografie">
+                    Biografie
+                </label>
+                <textarea id="biografie"></textarea>
+            </div>
+            <div class="two-row">
+                <label for="photo">
+                    Foto
+                </label>
+                <input type="file" id="photo">
+            </div>
+            <div class="submit">
+                <button @click="submit">Save</button>
+            </div>
+        </form>
+    </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
