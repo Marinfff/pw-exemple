@@ -2,120 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vue</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 <body>
 <div id="app">
     <div class="form">
-        <h3>Forma de inregestrare</h3>
-        <form action="">
-            <div>
-                <label for="name">
-                    Name
-                </label>
-                <input v-model="form.name" type="text" id="name">
-            </div>
-            <div>
-                <label for="second_name">
-                    Prenume
-                </label>
-                <input v-model="form.second_name" type="text" id="second_name">
-            </div>
-            <div>
-                <label for="email">
-                    Email
-                </label>
-                <input v-model="form.email" type="email" id="email">
-            </div>
-            <div>
-                <label for="city">
-                    Oras
-                </label>
-                <select id="city" v-model="form.city">
-                    <option value="Balti">Balti</option>
-                    <option value="Chisinau">Chisinau</option>
-                    <option value="Edinet">Edinet</option>
-                </select>
-            </div>
-            <div>
-                <label for="age">
-                    Varsta
-                </label>
-                <input v-model="form.age" type="number" id="age">
-            </div>
-            <div>
-                <label for="birthdate">
-                    Data nasterii
-                </label>
-                <input v-model="form.birthdate" type="date" id="birthdate">
-            </div>
-            <div>
-                <label for="color">
-                    Color
-                </label>
-                <input type="color" id="color">
-            </div>
-            <div>
-            <span>
-                Gen
-            </span>
-                <div class="flex">
-                    <input type="radio" name="gender" id="m_gender">
-                    <label for="m_gender">
-                        M
-                    </label>
-                    <input type="radio" name="gender" id="f_gender">
-                    <label for="f_gender">
-                        F
-                    </label>
-                </div>
-            </div>
-            <div>
-            <span>
-                Limbi vorbite
-            </span>
-                <div class="flex">
-                    <input type="checkbox" id="ru"> <label for="ru">RU</label>
-                    <input type="checkbox" id="ro"> <label for="ro">EN</label>
-                    <input type="checkbox" id="en"> <label for="en">EN</label>
-                </div>
-            </div>
-            <div>
-                <label for="password">
-                    Parola
-                </label>
-                <input :type="passwordType" id="password">
-            </div>
-            <div>
+        <div>
+            <input @keyup.enter="add()" type="text" v-model="message">
+        </div>
+        <br>
+        <div v-if="list.length === 0">
+            Sorry! Array is empty!
+        </div>
+        <div v-else>
+            <div v-for="(element, index) in list">
+                <input @input="changeIfIsEmpty(index)" v-if="element.editable" v-model="list[index].name" type="text">
+                <span v-else>
+                    {{element.name}}
+                </span>
+                <button v-if="element.editable" @click="saveItem(index)">Save</button>
+                <button v-else @click="editItem(index)">Edit</button>
+                <button @click="deleteItem(index)">Delete</button>
                 <br>
-                <br>
-                <div class="flex">
-                    <input v-model="showPassword" @click="togglePassword" type="checkbox">
-                    <label>Arata parola</label>
-                </div>
             </div>
-            <div class="two-row">
-                <label for="biografie">
-                    Biografie
-                </label>
-                <textarea id="biografie"></textarea>
-            </div>
-            <div class="two-row">
-                <label for="photo">
-                    Foto
-                </label>
-                <input type="file" id="photo">
-            </div>
-            <div class="submit">
-                <button @click="submit">Save</button>
-            </div>
-        </form>
+        </div>
+        <br>
+        <button @click="add()">Add item</button>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-<script src="script.js"></script>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            list: [],
+            message: ""
+        },
+        methods: {
+            add() {
+                this.message = this.message.trim();
+
+                if (this.message === "") {
+                    return;
+                }
+                if (this.list.includes(this.message)) {
+                    alert('Acest element deja exista!');
+                    return;
+                }
+                this.list.push({
+                    name: this.message,
+                    editable: false
+                })
+
+                this.message = "";
+            },
+            deleteItem(index) {
+                this.list.splice(index, 1)
+            },
+            editItem(index) {
+                this.list[index].editable = true;
+            },
+            saveItem(index) {
+                this.list[index].editable = false;
+            },
+            changeIfIsEmpty(index) {
+                if (this.list[index].name === "") {
+                    this.deleteItem(index)
+                }
+            }
+        }
+    })
+</script>
 </body>
 </html>
