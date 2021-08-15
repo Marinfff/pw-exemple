@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="form">
+    <h3>Forma de inregestrare</h3>
+    <form action="">
+        <div>
+            <label for="name">
+                Name
+            </label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label for="second_name">
+                Prenume
+            </label>
+            <input type="text" id="second_name">
+        </div>
+        <div>
+            <label for="email">
+                Email
+            </label>
+            <input type="email" id="email">
+        </div>
+        <div>
+            <label for="city">
+                Oras
+            </label>
+            <select id="city">
+                <option value="Balti">Balti</option>
+                <option value="Chisinau">Chisinau</option>
+                <option value="Edinet">Edinet</option>
+            </select>
+        </div>
+        <div>
+            <label for="age">
+                Varsta
+            </label>
+            <input type="number" id="age">
+        </div>
+        <div>
+            <label for="birthdate">
+                Data nasterii
+            </label>
+            <input type="date" id="birthdate">
+        </div>
+        <div>
+            <label for="color">
+                Color
+            </label>
+            <input type="color" id="color">
+        </div>
+        <div>
+            <span>
+                Gen
+            </span>
+            <div class="flex">
+                <input type="radio" name="gender" id="m_gender">
+                <label for="m_gender">
+                    M
+                </label>
+                <input type="radio" name="gender" id="f_gender">
+                <label for="f_gender">
+                    F
+                </label>
+            </div>
+        </div>
+        <div>
+            <span>
+                Limbi vorbite
+            </span>
+            <div class="flex">
+                <input type="checkbox" id="ru"> <label for="ru">RU</label>
+                <input type="checkbox" id="ro"> <label for="ro">EN</label>
+                <input type="checkbox" id="en"> <label for="en">EN</label>
+            </div>
+        </div>
+        <div>
+            <label for="password">
+                Parola
+            </label>
+            <input type="password" id="password">
+        </div>
+        <div
+            <br>
+            <br>
+            <div class="flex">
+                <input type="checkbox">
+                <label>Arata parola</label>
+            </div>
+        </div>
+        <div class="two-row">
+            <label for="biografie">
+                Biografie
+            </label>
+            <textarea id="biografie"></textarea>
+        </div>
+        <div class="two-row">
+            <label for="photo">
+                Foto
+            </label>
+            <input type="file" id="photo">
+        </div>
+        <div class="submit">
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
